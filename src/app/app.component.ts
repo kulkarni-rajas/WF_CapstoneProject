@@ -24,5 +24,16 @@ export class AppComponent {
      a:'A rhetorical question is a type of question that answers the question.',
      category_name:'Category 1'}
    ];
- 
+   username : string ="";
+  password : string ="";
+  show: boolean= false;
+  submit(){
+  console.log("user name is " + this.username)
+  this.clear();
+  }
+  clear(){
+  this.username ="";
+  this.password = "";
+  this.show = true;
+  }
 }
