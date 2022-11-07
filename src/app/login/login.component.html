@@ -1,12 +1,16 @@
-<h5><u><i>Login Form</i></u></h5>
-<form class="example-form" style="display: flex; flex-direction: column; gap: 10px">
-    <mat-form-field class="example-full-width" appearance="fill">
-
-        <input matInput placeholder="Enter your name">
-    </mat-form-field>
-    <mat-form-field class="example-full-width" appearance="fill">
-        <input matInput placeholder="Enter your password" value="" type="password">
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="submit()" style="width: 225px">Submit</button>
-    <span *ngIf="show"> <button mat-button color="accent">Login success !!</button></span>
-</form>
+<div class="loginContainer">
+    <h3>Login</h3>
+    <form class="example-form" style="display: flex; flex-direction: column; gap: 10px">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <input matInput placeholder="Enter your name">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <input matInput placeholder="Enter your password" value="" type="password">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="submit()" style="width: 100%"
+            class="btn btn-primary btn-block btn-large">Submit</button>
+        <span *ngIf="show">
+            <p>Login success !!</p>
+        </span>
+    </form>
+</div>

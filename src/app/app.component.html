@@ -5,20 +5,21 @@
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
 </script>
-<div class="container">
-  <h3>Angular Question Answer Accordion List</h3>
-  <div class="panel-group">
-    <div class="panel panel-default" *ngFor="let qa of questions; index as i">
-      <a class="panel-title" href="" data-toggle="collapse" aria-expanded="false" attr.data-target="#questions{{i}}">
-        Question {{qa.id}}: {{qa.q}}
-      </a>
-      <div attr.id="questions{{i}}" class="collapse">
-        <div class="panel-body">
-          <h4>Answer</h4>
-          <p> {{qa.a}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="main">
+  <mat-tab-group class="tabs">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">account_circle</mat-icon>
+        Login
+      </ng-template>
+      <app-login></app-login>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">help</mat-icon>
+        QA
+      </ng-template>
+      <app-qa></app-qa>
+    </mat-tab>
+  </mat-tab-group>
 </div>
-<app-login></app-login>
