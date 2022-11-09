@@ -1,17 +1,32 @@
-<div class="loginContainer">
-    <h3>Login</h3>
-    <form class="example-form" style="display: flex; flex-direction: column; gap: 10px">
-        <mat-form-field class="example-full-width" appearance="fill">
-            <input matInput placeholder="Enter your name">
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <input matInput placeholder="Enter your password" value="" type="password">
-        </mat-form-field>
-        <button mat-raised-button color="primary" (click)="submit()" style="width: 100%"
-            class="btn btn-primary btn-block btn-large">Submit</button>
-        <span *ngIf="show">
-            <p>Login success !!</p>
-        </span>
-        <p><a>Forget Password?</a></p>
-    </form>
+<div class="outer">
+    <div class="loginContainer">
+        <div class="row">
+            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+                <div class="panel border bg-white">
+                    <div class="panel-heading">
+                        <h3 class="pt-3 font-weight-bold"><b>LOGIN</b></h3>
+                    </div>
+                    <div class="panel-body p-3">
+                        <form [formGroup]="loginForm">
+                            <div class="form-group pt-3">
+                                <input formControlName="username" type="text" placeholder="Username">
+                            </div>
+                            <small
+                                *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
+                                class="text-danger">Username is required</small>
+                            <div class="form-group pt-3">
+                                <input formControlName="password" type="password" placeholder="Password">
+                            </div>
+                            <small
+                                *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"
+                                class="text-danger"> Password is required </small>
+                            <button (click)="onSubmit()" type="submit"
+                                class="btn btn-primary btn-block mt-4 w-100">LOGIN</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
