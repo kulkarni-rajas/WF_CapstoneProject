@@ -14,8 +14,7 @@ namespace BankAuthAPI.Models
         public string Token { get; set; }
         public string Role { get; set; }
         public string Email { get; set; }
-        [DefaultValue(true)]
-        public bool IsLocked { get; set; }
+        public int IsLocked { get; set; }
 
     }
 }

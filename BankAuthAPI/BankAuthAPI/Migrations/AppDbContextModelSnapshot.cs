@@ -35,8 +35,8 @@ namespace BankAuthAPI.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsLocked")
-                        .HasColumnType("bit");
+                    b.Property<int>("IsLocked")
+                        .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");

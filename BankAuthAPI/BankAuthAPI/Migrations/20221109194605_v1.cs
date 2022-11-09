@@ -23,7 +23,7 @@ namespace BankAuthAPI.Migrations
                     Token = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Role = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsLocked = table.Column<bool>(type: "bit", nullable: false)
+                    IsLocked = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
