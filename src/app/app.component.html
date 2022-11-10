@@ -5,21 +5,4 @@
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
 </script>
-<div class="main">
-  <mat-tab-group class="tabs">
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <mat-icon class="example-tab-icon">account_circle</mat-icon>
-        Login
-      </ng-template>
-      <app-login></app-login>
-    </mat-tab>
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <mat-icon class="example-tab-icon">help</mat-icon>
-        QA
-      </ng-template>
-      <app-qa></app-qa>
-    </mat-tab>
-  </mat-tab-group>
-</div>
+<router-outlet></router-outlet>

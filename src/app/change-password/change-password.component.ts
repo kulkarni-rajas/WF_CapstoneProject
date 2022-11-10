@@ -1,30 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthenticateService } from '../Services/authenticate.service';
 import { Router } from '@angular/router';
-import { AuthenticateService } from 'src/app/Services/authenticate.service';
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-change-password',
+  templateUrl: './change-password.component.html',
+  styleUrls: ['./change-password.component.css']
 })
-export class LoginComponent implements OnInit {
-  loginForm!:FormGroup;
+export class ChangePasswordComponent implements OnInit {
+  ChangePasswordForm!:FormGroup;
   constructor(private fb:FormBuilder,private auth:AuthenticateService,private router:Router) { }
-  stat!:string;
+
   ngOnInit(): void {
-      this.loginForm=this.fb.group({
-        username:['',Validators.required],
-        password:['',Validators.required]
-      })
+    this.ChangePasswordForm=this.fb.group({
+      password:['',Validators.required],
+      confirmPassword:['',Validators.required]
+    })
   }
+
   onSubmit(){
-    if(this.loginForm.valid){
-      console.log(this.loginForm.value)
-      if(this.loginForm.value.username === 'akil' && this.loginForm.value.password === 'vishnu'){
-        this.stat = 'Logged in';
+    if(this.ChangePasswordForm.valid){
+      if(this.ChangePasswordForm.value.password === this.ChangePasswordForm.value.confirmPassword){
+        console.log('Password is matching');
+        // Implement the logic to send the password to backend..
       }
-      console.log('stat is ' + this.stat);
+      else{
+        alert("Password is not matching...");
+      }
       // this.auth.login(this.loginForm.value)
       // .subscribe({
       //   next:(res)=>{
@@ -38,7 +40,7 @@ export class LoginComponent implements OnInit {
     }
     else{
       //throw error
-        this.validateAllFormFields(this.loginForm);
+        this.validateAllFormFields(this.ChangePasswordForm);
         alert("Form is invalid")
     }
   }
@@ -53,6 +55,4 @@ export class LoginComponent implements OnInit {
       }
     })
   }
-
-  
 }

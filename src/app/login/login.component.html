@@ -1,32 +1,50 @@
-<div class="outer">
-    <div class="loginContainer">
-        <div class="row">
-            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
-                <div class="panel border bg-white">
-                    <div class="panel-heading">
-                        <h3 class="pt-3 font-weight-bold"><b>LOGIN</b></h3>
-                    </div>
-                    <div class="panel-body p-3">
-                        <form [formGroup]="loginForm">
-                            <div class="form-group pt-3">
-                                <input formControlName="username" type="text" placeholder="Username">
-                            </div>
-                            <small
-                                *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
-                                class="text-danger">Username is required</small>
-                            <div class="form-group pt-3">
-                                <input formControlName="password" type="password" placeholder="Password">
-                            </div>
-                            <small
-                                *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"
-                                class="text-danger"> Password is required </small>
-                            <button (click)="onSubmit()" type="submit"
-                                class="btn btn-primary btn-block mt-4 w-100">LOGIN</button>
+<div class="main">
+    <mat-tab-group class="tabs">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">account_circle</mat-icon>
+                Login
+            </ng-template>
+            <div class="outer">
+                <div class="loginContainer">
+                    <div class="row">
+                        <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+                            <div class="panel border bg-white">
+                                <div class="panel-heading">
+                                    <h3 class="pt-3 font-weight-bold"><b>LOGIN</b></h3>
+                                </div>
+                                <div class="panel-body p-3">
+                                    <form [formGroup]="loginForm">
+                                        <div class="form-group pt-3">
+                                            <input formControlName="username" type="text" placeholder="Username">
+                                        </div>
+                                        <small
+                                            *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
+                                            class="text-danger">Username is required</small>
+                                        <div class="form-group pt-3">
+                                            <input formControlName="password" type="password" placeholder="Password">
+                                        </div>
+                                        <small
+                                            *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"
+                                            class="text-danger"> Password is required </small>
+                                        <button (click)="onSubmit()" type="submit"
+                                            class="btn btn-primary btn-block mt-4 w-100">LOGIN</button>
 
-                        </form>
+                                    </form>
+                                </div>
+                                <a class="button" routerLink="/changepassword">Forgot Password?</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">help</mat-icon>
+                QA
+            </ng-template>
+            <app-qa></app-qa>
+        </mat-tab>
+    </mat-tab-group>
 </div>
