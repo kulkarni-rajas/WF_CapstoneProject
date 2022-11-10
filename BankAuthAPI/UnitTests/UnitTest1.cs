@@ -1,34 +1,73 @@
-using BankAuthAPI.Controllers;
+using BankAuthAPI.Context;
+using BankAuthAPI.Helper;
 using BankAuthAPI.Models;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Mvc.Testing;
-using System.Net.Http.Json;
+using Microsoft.EntityFrameworkCore;
 
-namespace UnitTests
+namespace BankAuth.UnitTests;
+
+[TestFixture]
+public class UserTests
 {
-    public class Tests
+    private readonly AppDbContext _authContext;
+
+    public UserTests(AppDbContext authContext)
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
+        _authContext = authContext;
+    }
 
-        [Test]
-        public async Task TestUserLogin()
-        {
-           
-            using var application = new WebApplicationFactory<Program>();
-            var client = application.CreateClient();
+    [SetUp]
+    public void Setup()
+ {
+        // Add DB connection here
+ }
 
+    [Test]
+    public async Task InvalidUsername_ReturnsFalse()
+    {
+        // Arrange
+        var user = new User();
 
+        // Act
+        user.Username = "new.user";
+        var result = await _authContext.Users.AnyAsync(x => x.Username == user.Username);
 
-            var activity = await client.GetAsync($"/authenticate");
-            Assert.NotNull(activity);
-            
+        // Assert
+        Assert.That(result, Is.False);
+    }
 
+    [Test]
+    public async Task CorrectCredentials_ReturnsTrue()
+    {
+        // Arrange
+        var user = new User();
 
+        // Act
+        user.Username = "john";
+        user.Password = "1234";
 
-        }
-        
+        var dbUser = await _authContext.Users.FirstOrDefaultAsync(x => x.Username == user.Username);
+
+        var result = PasswordHasher.VerifyPassword(dbUser.Password, user.Password);
+
+        // Assert
+        Assert.That(result, Is.True);
+    }
+
+    [Test]
+    public async Task InvalidPassword_ReturnsFalse()
+    {
+        // Arrange
+        var user = new User();
+
+        // Act
+        user.Username = "jane";
+        user.Password = "1234";
+
+        var dbUser = await _authContext.Users.FirstOrDefaultAsync(x => x.Username == user.Username);
+
+        var result = PasswordHasher.VerifyPassword(dbUser.Password, user.Password);
+
+        // Assert
+        Assert.That(result, Is.False);
     }
 }
