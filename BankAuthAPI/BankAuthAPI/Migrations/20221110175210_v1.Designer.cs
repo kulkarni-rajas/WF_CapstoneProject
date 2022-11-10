@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankAuthAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221109194605_v1")]
+    [Migration("20221110175210_v1")]
     partial class v1
     {
         /// <inheritdoc />
@@ -32,16 +32,16 @@ namespace BankAuthAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Email")
+                    b.Property<string>("AccountType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("IsLocked")
                         .HasColumnType("int");
 
-                    b.Property<string>("LastName")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
