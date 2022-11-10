@@ -1,0 +1,23 @@
+<div class="container">
+    <h3>Frequently asked questions (FAQs)</h3>
+    <div class="panel-group">
+        <tbody>
+            <tr *ngFor="let ques of questions; index as i">
+                <td>{{ques.q}}</td>
+                <td>{{ques.a}}</td>
+            </tr>
+        </tbody>
+        <!-- <div class="panel panel-default" *ngFor="let ques of questions; index as i">
+            <a class="panel-title" href="" data-toggle="collapse" aria-expanded="false"
+                attr.data-target="#questions{{i}}">
+                Question {{ques.id}}: {{ques.q}}
+            </a>
+            <div attr.id="questions{{i}}" class="collapse">
+                <div class="panel-body">
+                    <h4>Answer</h4>
+                    <p> {{ques.a}}</p>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>

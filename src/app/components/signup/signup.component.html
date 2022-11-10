@@ -1,0 +1,64 @@
+<div class="outer">
+    <div class="container">
+        <div class="row">
+           <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+           <div class="panel border bg-white">
+            <div class="panel-heading">
+                <h3 class="pt-3 font-weight-bold">Sign Up</h3>
+            </div>
+            <div class="panel-body p-3">
+                <form [formGroup]="signupForm">
+                    <div class="form-group pt-3">
+                        <div class="input-filed">
+                            <span class="fa fa-user p-2"></span>
+                            <input formControlName="name" type="text" placeholder="Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group pt-3">
+                        <div class="input-filed">
+                            <span class="fa fa-user p-2"></span>
+                            <input formControlName="username" type="text" placeholder="User Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group pt-3">
+                        <div class="input-filed">
+                            <span class="fa fa-user p-2"></span>
+                            <input formControlName="accountType" type="text" placeholder="Account Type">
+                        </div>
+                    </div>
+
+                    
+                    <div class="form-group pt-3">
+                        <div class="input-filed">
+                            <span class="fa fa-user p-2"></span>
+                            <input formControlName="email" type="text" placeholder="Email Id">
+                        </div>
+                    </div>
+
+                    <div class="form-group pt-3">
+                        <div class="input-filed">
+                            <span class="fa fa-lock p-2"></span>
+                            <input formControlName="password" [type]="type" placeholder="Password">
+                            <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary btn-block mt-4 w-100" (click)="onSignup()">Sign up</button>
+                    <div class="class text-center pt-4 text-muted">Already have account?<a id="forget" routerLink="/login">Login</a></div>
+                </form>
+            </div>
+            <div class="mx-3 my-2 py-2 bordert">
+                <div class="class text-center py-3">
+                    <a href="https://www.google.com" target="_blank" class="px-2"> <img src="data:image/png;base64,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"></a>
+                    <a href="https://www.facebook.com" target="_blank" class="px-2"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHwAAAB8CAMAAACcwCSMAAAAYFBMVEU6VZ/////19vouTp0lR5m5wNoqSpqbpso0U59fcqz7+/ymsM+zu9Zcb6siRZgzUJ1RZ6gbQZfl6PF1hbeOmsJ7i7trfbPCyd4AN5NCW6He4e2Gk8DKz+Hr7fSUoMYTPJUVcBvKAAABhElEQVRoge3ZyXKDMBBFUYWhEQ4gA54gDvz/X7qySWzcDKXqRlm8u6bqWCBAyMYghBBCCP2zrIuJkknxHrKrTNmess9pZ32dzOXaHD6Y0kqZjl3WcPBPhS5ub6dojtbG466fp5VxaheGrYwnX+w02wWn8zKtibvjmq2I18vXWxWnYtVWw125bqvhdA+Hbxq4Fl6lAXHzHQ53ly22Ek7ZnHd4rkg08HpmrjfDpfwrP1oVnF8/DDU5+5yGbUb20dqqnOW3iMOVF02/xRzudM7yJrwZ97FZ/LrTWWfxdJ/pBhw4cODAhbL0GvedVow0TeYd22WTmA/zfpgelHUSus3frS2JLCBtvrIFwRd1ArYv3kvYvvidAuJpSDwLicvs+3ripQuIG5EnnB8eiVxyT7yXedP44TK3uSdehMQHmX9Y/PBW5E7zxIV2ZPzwWsT2w6ObFO4x8EZo5MZO4jaE0ur1GJnpxvwWdumMbRHgwIEDBw4cOHDgwIEDBw4cOHDgwIEDB743/gAFWh4fpr6u9AAAAABJRU5ErkJggg=="></a>
+                    <a href="https://www.github.com" target="_blank" class="px-2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXqDKyfbUJ3bsDc5tPovwsAHicZqq5HIMDYPvmRzpdmg&s"></a>
+                </div>
+            </div>
+           </div>
+        </div>
+        </div>
+
+    </div>
+</div>
